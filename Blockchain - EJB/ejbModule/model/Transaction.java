@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Comparator;
 
 public class Transaction {
 	
@@ -31,7 +32,7 @@ public class Transaction {
 		 return fee;
 	 }
 	
-	Integer getHash() {
+	public Integer getHash() {
 		final int prime = 31;
 		int result = 1;
 		long temp;
@@ -42,4 +43,17 @@ public class Transaction {
 		return result;
 	}
 
+
+	public static Comparator<Transaction> transactionsComparator = new Comparator<Transaction>() {
+
+		@Override
+		public int compare(Transaction o1, Transaction o2) {
+			double amount1 = o1.getAmount();
+			double amount2 = o2.getAmount();
+			Double result = amount1 - amount2; 
+			return result.intValue();
+		}
+		
+	};
+	
 }

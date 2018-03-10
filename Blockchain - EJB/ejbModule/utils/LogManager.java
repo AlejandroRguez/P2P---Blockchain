@@ -1,7 +1,6 @@
 package utils;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.FileHandler;
@@ -19,13 +18,12 @@ public class LogManager {
 		try {
 			SimpleDateFormat jdf = new SimpleDateFormat("yyyyMMdd");
 			Date d = new Date();
-			fh = new FileHandler("./logs/foodchain" + jdf.format(d) + ".log", true);
+			fh = new FileHandler("./logs/blockchain" + jdf.format(d) + ".log", true);
 			fh.setFormatter(new SimpleFormatter());
 			logger.addHandler(fh);
 			logger.log(logLevel, message);
 			fh.close();
 		} catch (SecurityException e) {
-			//Intentar hacer algo más elegante
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
