@@ -11,6 +11,10 @@ import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 
 import com.tfg.entities.Blockchain;
 
+/**
+ * Clase encargada de definir los criterios de conexión entre sockets
+ *
+ */
 public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	
 	private String sessionIdentifier;
@@ -33,6 +37,11 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 		}
 	}
 
+	/**
+	 * Suscribe al socket al canal en el que este debe leer los mensajes
+	 * @param topic El topic adecuado
+	 * @param session La sesión actual
+	 */
 	private void subscribeTopic(String topic, StompSession session) {
 		session.subscribe(topic, new StompFrameHandler() {
 
@@ -52,8 +61,8 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 	public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
 		System.err.println("Connected! Headers:");
 		showHeaders(connectedHeaders);
-
 		subscribeTopic("/topic/transactions", session);
+		
 	}
 }
 

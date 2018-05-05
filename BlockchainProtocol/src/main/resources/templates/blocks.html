@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+
+<body>
+	<nav th:replace="fragments/nav" />
+
+	<div class="container">
+		<h2 th:text="#{bloques}"></h2>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-1" th:text="#{indice}"></th>
+						<th th:text="#{hash}"></th>
+						<th th:text="#{fecha.creacion}"></th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="block : ${blockList}">
+						<td th:text="${block.index}"></td>
+						<td th:text="${block.hash}"></td>
+						<td th:text="${block.creation}"></td>
+						<td><a th:href="${'/block/info/' + block.index}" th:text="#{informacion}" ></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<div th:if="${#lists.isEmpty(blockList)}" th:text="#{no.bloques}"></div>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>

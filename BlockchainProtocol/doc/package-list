@@ -1,0 +1,9 @@
+com.tfg
+com.tfg.bussiness.account
+com.tfg.bussiness.block
+com.tfg.bussiness.blockchain
+com.tfg.bussiness.transaction
+com.tfg.controllers
+com.tfg.entities
+com.tfg.services
+com.tfg.utils

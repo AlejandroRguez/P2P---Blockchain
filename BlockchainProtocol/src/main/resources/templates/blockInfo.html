@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments/head" />
+
+<body>
+	<nav th:replace="fragments/nav" />
+
+	<div class="container">
+		<h2 th:text="${'Block #' + block.index}"></h2>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<th colspan="4" th:text="#{resumen}"></th>
+					</tr>
+					<tr>
+						<td th:text="#{indice}"></td>
+						<td th:text="${block.index}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{minero}"></td>
+						<td><a th:href="${'/block/miner/' + block.miner.nickname}" th:text="${block.miner.nickname}" ></a></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{fecha.creacion}"></td>
+						<td th:text="${block.creation}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{numero.transacciones}"></td>
+						<td th:text="${block.numberOfTransactions}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{total.transmitido}"></td>
+						<td th:text="${block.totalAmount}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{total.comision}"></td>
+						<td th:text="${block.totalFee}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="4" th:text="#{hashes}"></th>
+					</tr>
+					<tr>
+						<td th:text="#{bloque.anterior}"></td>
+						<td th:text="${block.previousBlockHash}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td th:text="#{bloque.actual}"></td>
+						<td th:text="${block.hash}"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th colspan="4" th:text="#{transacciones}"></th>
+					</tr>
+					<tr>
+						<th th:text="#{emisor}"></th>
+						<th th:text="#{receptor}"></th>
+						<th th:text="#{importe}"></th>
+						<th th:text="#{comision}"></th>
+					</tr>
+					<tr th:each="tr : ${block.transactions}">
+						<td><a th:href="${'/block/miner/' + tr.sender}" th:text="${tr.sender}"></a></td>
+						<td><a th:href="${'/block/miner/' + tr.receiver}" th:text="${tr.receiver}"></a></td>
+						<td th:text="${tr.amount}"></td>
+						<td th:text="${tr.fee}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer" />
+</body>
+</html>

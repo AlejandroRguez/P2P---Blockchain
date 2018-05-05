@@ -123,6 +123,11 @@ public class Blockchain {
 		return getCurrentPrice() * getTotalTokens();
 	}
 	
+	public String toString() {
+		return "Chain status -> {Blocks: " + getNumberOfBlocks() + " | Transactions: " 
+			+ getNumberOfTotalTransactions() + " | Users: " + getCurrentUsers().size() + " }";
+    }
+	
 
 
 

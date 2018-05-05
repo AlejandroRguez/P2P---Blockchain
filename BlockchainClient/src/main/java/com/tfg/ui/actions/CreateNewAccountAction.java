@@ -4,8 +4,8 @@ import org.json.JSONObject;
 import org.springframework.messaging.simp.stomp.StompSession;
 
 import com.tfg.utils.InitializeConnection;
-import com.tfg.utils.alb.console.Console;
-import com.tfg.utils.alb.menu.Action;
+import com.tfg.utils.console.Console;
+import com.tfg.utils.menu.Action;
 
 public class CreateNewAccountAction implements Action{
 
@@ -18,8 +18,10 @@ public class CreateNewAccountAction implements Action{
 		
 		do {
 			Thread.sleep(500);			
-			nickname = Console.readString("Nickname: ");
-			amount = Console.readDouble("Amount: ");
+			nickname = Console.readString("Nickname");
+			amount = Console.readDouble("Amount");
+			long t1 = System.currentTimeMillis();
+			System.out.print(t1);
 		
 		} while(!check(nickname, amount));
 
@@ -27,15 +29,21 @@ public class CreateNewAccountAction implements Action{
 		json.put("nickname", nickname);
 		json.put("amount", amount);
 		
-		session.send("/app/chain.newAccount", json.toMap());	
+		session.send("/app/chain.newAccount", json.toMap()); 	
 	}
 	
 	private boolean check(String nickname, double amount) {
-		if(nickname.equals("") || amount < 0) {
-			Console.println("Invalid data. Please try again...");
+		if(nickname.equals("")) {
+			Console.println("Invalid nikname. Please try again...");
 			return false;
 		}
-		return true;	
+		
+		if(amount < 1) {
+			Console.println("Amount can not be negative. 1 token are the fee for this operation. Please try again...");
+			return false;
+		}
+		
+		return true;
 	}
 
 

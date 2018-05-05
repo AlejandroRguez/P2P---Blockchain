@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="/script/chart.js"></script>
+<head th:replace="fragments/head" />
+
+<body>
+	<nav th:replace="fragments/nav"/>
+	<div class="container">
+	<h1 th:text="#{grafico}"></h1>
+	<div id="canvas-holder">
+		<canvas id="chart-area" position=relative width=100% height="20%"></canvas>
+	</div>
+	<script>
+	var lineChartData = {
+			labels : ["","","","","","","","","","","",""],
+			datasets : [
+				{
+					fillColor : "#D3D3D3",
+					strokeColor : "#93BA09",
+					pointColor : "#93BA09",
+					pointStrokeColor : "#93BA09",
+					pointHighlightFill : "#93BA09",
+					pointHighlightStroke : "#93BA09",
+					data : [[${blockchain.prices}]]
+				},
+			]
+			
+
+}
+	var ctx = document.getElementById("chart-area").getContext("2d");
+	window.myPie = new Chart(ctx).Line(lineChartData, {responsive:true});
+</script>
+		<h1 th:text="#{ultimos.bloques}"></h1>
+		<a class="verTodos" th:href="${'/blocks'}" th:text="#{ver}" ></a>
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-1" th:text="#{indice}"></th>
+						<th th:text="#{hash}"></th>
+						<th th:text="#{fecha.creacion}"></th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="block : ${blockchain.mainBlocks}">
+						<td th:text="${block.index}"></td>
+						<td th:text="${block.hash}"></td>
+						<td th:text="${block.creation}"></td>
+						<td id="info"><a th:href="${'/block/info/' + block.index}" th:text="#{informacion}" ></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="jumbotron">
+		  <div class="container">
+		  <h1 th:text="#{chain.data}"></h1>
+		  	<h2>
+		  	<span th:text="#{market.cap} + ':'"></span>
+    		<span class="data" th:text="'$'+${blockchain.marketCapitalization}"></span>
+    		</h2>
+    		<h2>
+		  	<span th:text="#{precio.actual} + ':'"></span>
+    		<span class="data" th:text="'$'+${blockchain.currentPrice}"></span>
+    		</h2>
+    		<h2>
+		  	<span th:text="#{transacciones.registradas} + ':'"></span>
+    		<span class="data" th:text="${blockchain.transactions}"></span>
+    		</h2>
+		  </div>
+		</div>
+	</div>
+	<footer th:replace="fragments/footer"/>
+</body>
+</html>

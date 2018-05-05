@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Blockchain</a>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="inactive">
+					<a href="/" th:text="#{pagina.inicial}"></a>
+				</li>
+				<li class="dropdown">
+				   <a id="btnLanguage" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span th:text="#{choose.language}"></span> <span class="caret"></span> </a> 
+				   <ul id="languageDropdownMenuButton" class="dropdown-menu">
+				      <li> <a id="btnEnglish" value="EN"> <img th:src="@{/img/en_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{english}">English</span> </a> </li>
+				      <li> <a id="btnSpanish" value="ES"> <img th:src="@{/img/es_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{spanish}">Spanish</span> </a> </li>
+				      <li> <a id="btnChinesse" value="CH"> <img th:src="@{/img/ch_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{chino}">Chinnesse</span> </a> </li>
+				      <li> <a id="btnGerman" value="DE"> <img th:src="@{/img/de_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{aleman}">Deutsch</span> </a> </li>
+				      <li> <a id="btnItalian" value="IT"> <img th:src="@{/img/it_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{italiano}">Italian</span> </a> </li>
+				      <li> <a id="btnFrench" value="FR"> <img th:src="@{/img/fr_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{frances}">French</span> </a> </li>
+				      <li> <a id="btnPortugues" value="PT"> <img th:src="@{/img/pt_flag.png}" style="border: 0; float: left; margin-right: 15px" /> <span th:text="#{portugues}">Portugues</span> </a> </li>
+				   </ul>
+				</li>
+			</ul>
+		</div>
+</nav>
