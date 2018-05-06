@@ -21,8 +21,6 @@ public class SendTransactionAction implements Action {
 			amount = Console.readDouble("Amount");
 			fee = Console.readDouble("Fee");
 		} while (!check(sender, receiver, amount, fee));
-		long t1 = System.currentTimeMillis();
-		System.out.print(t1);
 		JSONObject json = new JSONObject();
 		json.put("sender", sender);
 		json.put("receiver", receiver);

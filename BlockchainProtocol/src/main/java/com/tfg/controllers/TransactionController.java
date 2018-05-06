@@ -26,8 +26,6 @@ public class TransactionController
     	String receiver = (String)transaction.get("receiver");
     	double amount = (Double)transaction.get("amount");
     	double fee = (Double)transaction.get("fee");
-    	long t1 = System.currentTimeMillis();
-		System.out.print(t1);
     	Services.getTransactionService().newTransaction(sender, receiver, amount, fee);
     	return Services.getBlockchainService().getInstance();
     }
@@ -44,8 +42,6 @@ public class TransactionController
     public Blockchain createAccount(Map<String, Object> account) throws Exception {
     	String nickname = (String)account.get("nickname");
     	double amount = (Double)account.get("amount");
-    	long t1 = System.currentTimeMillis();
-		System.out.print(t1);
     	Services.getAccountService().newAccount(nickname, amount);
     	return Services.getBlockchainService().getInstance();
     }
@@ -63,8 +59,6 @@ public class TransactionController
     	String nik = (String)purchase.get("nickname");
     	String seller = (String)purchase.get("seller");
     	double amount = (Double)purchase.get("amount");
-    	long t1 = System.currentTimeMillis();
-		System.out.print(t1);
     	Services.getAccountService().createBuyAccount(seller, amount, nik);
     	return Services.getBlockchainService().getInstance();
     }

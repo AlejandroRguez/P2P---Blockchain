@@ -20,8 +20,6 @@ public class CreateNewAccountAction implements Action{
 			Thread.sleep(500);			
 			nickname = Console.readString("Nickname");
 			amount = Console.readDouble("Amount");
-			long t1 = System.currentTimeMillis();
-			System.out.print(t1);
 		
 		} while(!check(nickname, amount));
 

@@ -156,9 +156,9 @@ public class BlockchainServerApplicationTests {
 		Assert.assertTrue(bcs.getInstance().getCurrentUsers().stream().parallel().mapToDouble(m -> m.getAmount()).sum() - expectedTotalAmount < 1);
 		
 		//Invalid sender
-		ts.newTransaction("J", "Cuenta-C", 1, 0.20);
+		ts.newTransaction("Cuenta-J", "Cuenta-C", 1, 0.20);
 		//Invalid recipient
-		ts.newTransaction("Cuenta-B", "L", 1, 0.20);
+		ts.newTransaction("Cuenta-B", "Cuenta-L", 1, 0.20);
 		//Invalid amount
 		ts.newTransaction("Cuenta-B", "Cuenta-C", -3, 0.10);
 		//Invalid fee
@@ -172,10 +172,10 @@ public class BlockchainServerApplicationTests {
 		Assert.assertTrue(bcs.getInstance().getNumberOfTotalTransactions() == 38);
 		Assert.assertTrue(bcs.getInstance().getNumberOfBlocks() == 10);
 		
-		as.createBuyAccount("Cuenta-B", 5.0, "G");
-		as.createBuyAccount("Cuenta-C", 5.0, "H");
-		as.createBuyAccount("Cuenta-D", 5.0, "I");
-		as.createBuyAccount("Cuenta-E", 5.0, "J");
+		as.createBuyAccount("Cuenta-B", 5.0, "Cuenta-G");
+		as.createBuyAccount("Cuenta-C", 5.0, "Cuenta-H");
+		as.createBuyAccount("Cuenta-D", 5.0, "Cuenta-I");
+		as.createBuyAccount("Cuenta-E", 5.0, "Cuenta-J");
 		
 		Assert.assertTrue(bcs.getInstance().getNumberOfAddedTransactions() == 40);
 		Assert.assertTrue(bcs.getInstance().getNumberOfPendingTransactions() == 2);
@@ -196,7 +196,7 @@ public class BlockchainServerApplicationTests {
 		Assert.assertTrue(bcs.getInstance().getNumberOfBlocks() == 11);
 		Assert.assertTrue(bcs.getInstance().getCurrentUsers().size() == 10);
 		
-		
+		bcs.getInstance().getCurrentUsers().stream().parallel().forEach((m -> System.out.println(m.getNickname() + ":" + m.getAmount())));
 		
 		
 	}

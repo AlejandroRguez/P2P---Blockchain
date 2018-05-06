@@ -21,8 +21,6 @@ public class BuyTokensAction implements Action{
 			 seller = Console.readString("Seller");
 			 amount = Console.readDouble("Amount");
 		}while(!check(nickname, seller, amount));
-		long t1 = System.currentTimeMillis();
-		System.out.print(t1);
 		JSONObject json = new JSONObject();
 		json.put("nickname", nickname);
 		json.put("seller", seller);
